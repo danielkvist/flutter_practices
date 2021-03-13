@@ -1,6 +1,6 @@
+import 'package:analog_clock/screens/home_screen.dart';
 import 'package:analog_clock/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:analog_clock/screens/home_screen.dart';
 
 void main() {
   runApp(App());
