@@ -7,6 +7,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context),
       body: Body(),
+      bottomNavigationBar: bottomNavigationBuilder(context),
     );
   }
 
@@ -44,4 +45,25 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+BottomNavigationBar bottomNavigationBuilder(BuildContext context) {
+  return BottomNavigationBar(
+    items: const <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(Icons.alarm),
+        label: 'Alarms',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.query_builder),
+        label: 'Clock',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.hourglass_bottom),
+        label: 'Timer',
+      ),
+    ],
+    currentIndex: 1,
+    selectedItemColor: Theme.of(context).primaryColor,
+  );
 }

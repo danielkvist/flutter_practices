@@ -14,7 +14,11 @@ class Body extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyText1,
           ),
           TimeInHoursAndMinutes(),
+          SizedBox(
+            height: 48.0,
+          ),
           Clock(),
+          Spacer(),
         ],
       ),
     );
