@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:analog_clock/constants.dart';
+import 'package:analog_clock/models/theme_provider.dart';
 import 'package:analog_clock/screens/components/clock_painter.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Clock extends StatefulWidget {
   @override
@@ -25,30 +27,48 @@ class _ClockState extends State<Clock> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(32.0),
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(0, 0),
-                color: shadowColor.withOpacity(0.14),
-                blurRadius: 64.0,
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 0),
+                    color: shadowColor.withOpacity(0.14),
+                    blurRadius: 64.0,
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: Transform.rotate(
-            angle: -pi / 2,
-            child: CustomPaint(
-              painter: ClockPainter(context, _dateTime),
+              child: Transform.rotate(
+                angle: -pi / 2,
+                child: CustomPaint(
+                  painter: ClockPainter(context, _dateTime),
+                ),
+              ),
             ),
           ),
         ),
-      ),
+        Positioned(
+          top: 50.0,
+          left: 0,
+          right: 0,
+          child: Consumer<ThemeModel>(
+            builder: (context, theme, child) => GestureDetector(
+              onTap: () => theme.changeTheme(),
+              child: Icon(
+                theme.isLightTheme ? Icons.brightness_5_sharp : Icons.bedtime,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
