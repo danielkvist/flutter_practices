@@ -29,7 +29,7 @@ class _TimeInHoursAndMinutesState extends State<TimeInHoursAndMinutes> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "${_timeOfDay.hourOfPeriod}:${_timeOfDay.minute.toString().padLeft(2, '0')}",
+          "${_timeOfDay.hourOfPeriod.toString().padLeft(2, '0')}:${_timeOfDay.minute.toString().padLeft(2, '0')}",
           style: Theme.of(context).textTheme.headline1,
         ),
         SizedBox(
