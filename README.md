@@ -33,3 +33,7 @@ In this document I will also add a list of the resources used in all the project
 **Dependencies**
 
 - [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+
+## [Classic Snake](https://github.com/danielkvist/flutter_practices/tree/master/classic_snake)
+
+[Tutorial by A Day Code](https://www.youtube.com/watch?v=xreBGVmOHrY)
